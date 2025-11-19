@@ -14,4 +14,20 @@ Feature: Click on the next button on payment plans page   #! Test Only
 
     #TODO: Create scenarios that cover all the acceptance criteria
 
+    Background: 
+        Given user is on the enrollment page
+        And user has completed step one with valid information
+        And user is on step two of the enrollment process
+
+    Scenario: verify that the next button is disabled by defult
+        Then the next button is displayed by default
+
+    Scenario: verify that the next button will be activated when user selects upfront payment option
+        When user clicks upfront payment option
+        Then the next button will be enabled
+
+    Scenario: verify that the next button will be activated when user selects installments payment option
+        When user clicks installments payment option
+        Then the next button will be enabled
+
 
