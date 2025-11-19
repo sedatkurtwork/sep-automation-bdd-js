@@ -15,3 +15,12 @@ Feature: Display the product information
 
     Background:
         Given user is on the enrollment page
+
+    Scenario: Verify product information card displays correct details
+        Then the product name should be displayed on the information card
+        And the product name on the information card should match the product name on the left side of the screen
+        And the price of the product should be displayed
+        And the text indicating a flexible payment plan should be displayed
+        And the program start date should be displayed
+        And the return policy should be displayed
+        And the final date for returns should be displayed    
