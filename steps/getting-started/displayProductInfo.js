@@ -6,24 +6,47 @@ import { productInfo } from "../../utilities/qa-data-reader.js";
 
 Then(
   "the product name should be displayed on the information card",
-  async function () {}
+  async function () {
+    await expect(leftMainPage.programName).toBeVisible();
+
+  }
 );
 
 Then(
   "the product name on the information card should match the product name on the left side of the screen",
-  async function () {}
+  async function () {
+
+    let expectedProductName = productInfo.productName;
+    let actualProductName = await leftMainPage.programName.innerText();
+
+    expect(actualProductName).toBe(expectedProductName);
+  }
 );
 
-Then("the price of the product should be displayed", async function () {});
+Then("the price of the product should be displayed", async function () {
+  let programPriceText =  startApplicationPage.programPrice;
+  await expect(programPriceText).toBeVisible();
+
+});
 
 Then(
   "the text indicating a flexible payment plan should be displayed",
-  async function () {}
+  async function () {
+    let flexiblePaymentPlanText =
+      startApplicationPage.flexiblePaymentsPlanAvailableText;
+    await expect(flexiblePaymentPlanText).toBeVisible();
+  }
 );
 
-Then("the program start date should be displayed", async function () {});
+Then("the program start date should be displayed", async function () {
+    let programStartDate = startApplicationPage.programStartDate;
+    await expect(programStartDate).toBeVisible();
+});
 
-Then("the return policy should be displayed", async function () {});
-
-Then("the final date for returns should be displayed", async function () {});
-
+Then(
+  "the return policy and final date for returns should be displayed",
+  async function () {
+    let returnPolicy = startApplicationPage.refundEndDate;
+    await expect(returnPolicy).toBeVisible();
+  }
+);
