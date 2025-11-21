@@ -7,9 +7,15 @@ export class LeftMainPage extends BasePage {
   constructor(page) {
     super(page);
 
+
+
     this.cydeoImageAtLeftWindow = page.locator(
       "(//img[@src = 'assets/images/logo.svg'])[2]"
     );
+
+        this.cydeoLogoAtLeftWindow = page.locator(
+          "(//img[@src = 'assets/images/logo.svg'])[3]"
+        );
 
     this.secureCheckout = page.locator("//p[@class='checkout-title']");
 
