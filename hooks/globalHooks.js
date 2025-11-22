@@ -1,15 +1,20 @@
-import { Before, After, setWorldConstructor, Status, setDefaultTimeout } from "@cucumber/cucumber";
+import {
+  Before,
+  After,
+  setWorldConstructor,
+  Status,
+  setDefaultTimeout,
+} from "@cucumber/cucumber";
 import { chromium, firefox, webkit } from "@playwright/test";
 import { initElements } from "../globalPagesSetup.js";
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 const BROWSER_TYPE = "chrome";
 const HEADLESS_MODE = false;
 const MAXIMIZED_WINDOW = true;
 const SLOW_MOTION_DELAY = 0; // slow mode in milliseconds
 const DEFAULT_TIMEOUT = 10000; // default timeout in milliseconds
-
 
 /**
  * This function is executed before each Cucumber scenario. It initializes the browser and page objects.
@@ -33,8 +38,6 @@ After(async function (scenario) {
   await this.close();
 });
 
-
-
 /**
  * This function takes a screenshot of the current page when a Cucumber scenario fails.
  *
@@ -45,15 +48,21 @@ After(async function (scenario) {
  */
 async function takeScreenshot(page, scenarioName) {
   if (!page) {
-    console.warn('Page object not available, skipping screenshot');
+    console.warn("Page object not available, skipping screenshot");
     return;
   }
 
-  const screenshotsDir = path.join(process.cwd(), 'reports', 'screenshots');
+  const screenshotsDir = path.join(process.cwd(), "reports", "screenshots");
   fs.mkdirSync(screenshotsDir, { recursive: true });
 
-  const currentDateTime = new Date().toISOString().replace(/[:T.]/g, '_').slice(0, -5);
-  const fileName = `${scenarioName.replace(/\s+/g, '_')}_${currentDateTime}.png`;
+  const currentDateTime = new Date()
+    .toISOString()
+    .replace(/[:T.]/g, "_")
+    .slice(0, -5);
+  const fileName = `${scenarioName.replace(
+    /\s+/g,
+    "_"
+  )}_${currentDateTime}.png`;
   const filePath = path.join(screenshotsDir, fileName);
 
   await page.screenshot({ path: filePath, fullPage: true });
@@ -64,7 +73,6 @@ async function takeScreenshot(page, scenarioName) {
  * It initializes and manages the browser and page objects for each scenario.
  */
 class CustomWorld {
-
   /**
    * Initializes a new browser instance based on the specified browser type.
    *
@@ -74,11 +82,19 @@ class CustomWorld {
     const launchOptions = {
       headless: HEADLESS_MODE,
       slowMo: SLOW_MOTION_DELAY,
-      args: MAXIMIZED_WINDOW && BROWSER_TYPE.toLowerCase() === "chrome" ? ["--start-maximized"] : [],
+      args:
+        MAXIMIZED_WINDOW && BROWSER_TYPE.toLowerCase() === "chrome"
+          ? ["--start-maximized"]
+          : [],
     };
 
     const browserType = BROWSER_TYPE.toLowerCase();
-    return await (browserType === "firefox" ? firefox : browserType === "webkit" || browserType === "safari" ? webkit : chromium).launch(launchOptions);
+    return await (browserType === "firefox"
+      ? firefox
+      : browserType === "webkit" || browserType === "safari"
+      ? webkit
+      : chromium
+    ).launch(launchOptions);
   }
 
   /**
@@ -88,14 +104,18 @@ class CustomWorld {
    */
   async init() {
     this.browser = await this.initializeBrowser();
-    this.context = await this.browser.newContext(MAXIMIZED_WINDOW ? { viewport: null } : {});
+    this.context = await this.browser.newContext(
+      MAXIMIZED_WINDOW ? { viewport: null } : {}
+    );
     this.page = await this.context.newPage();
 
     if (MAXIMIZED_WINDOW) {
-      await this.page.setViewportSize(await this.page.evaluate(() => ({
-        width: window.screen.availWidth,
-        height: window.screen.availHeight,
-      })));
+      await this.page.setViewportSize(
+        await this.page.evaluate(() => ({
+          width: window.screen.availWidth,
+          height: window.screen.availHeight,
+        }))
+      );
     }
 
     initElements(this.page);
@@ -108,8 +128,12 @@ class CustomWorld {
    */
   async close() {
     await Promise.all([
-      this.page?.close().catch(err => console.warn('Error closing page:', err)),
-      this.browser?.close().catch(err => console.warn('Error closing browser:', err))
+      this.page
+        ?.close()
+        .catch((err) => console.warn("Error closing page:", err)),
+      this.browser
+        ?.close()
+        .catch((err) => console.warn("Error closing browser:", err)),
     ]);
   }
 }
