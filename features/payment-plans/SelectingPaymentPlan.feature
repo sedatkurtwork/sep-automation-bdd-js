@@ -10,3 +10,25 @@ Feature: Selecting a price plan
 
 
     #TODO: Create scenarios that cover all the acceptance criteria
+
+    Background:
+        Given user is on the enrollment page
+        And user has completed step one with valid information
+        And user is on step two of the enrollment process
+
+    @sep14-1
+    Scenario: Selecting a payment plan should highlight the chosen plan
+        When user selects a payment plan
+        Then that payment plan option should be highlighted
+
+    @sep14-2
+    Scenario: Selecting a payment plan should activate the Next button
+        When user selects a payment plan
+        Then the next button on payment plan step should become enabled
+
+    @sep14-3
+    Scenario: User should be able to change their payment plan selection
+        When user clicks the first payment plan option
+        And user clicks the second payment plan option
+        Then the second payment plan option should be highlighted
+        And the first payment plan option should not be highlighted

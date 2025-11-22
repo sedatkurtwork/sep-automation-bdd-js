@@ -23,18 +23,21 @@ Given("user is on step two of the enrollment process", async function () {
 });
 
 When("user clicks a payment plan option", async function () {
-  await paymentPlanPage.selectPaymentPlan("installments");
+  // await page.waitForTimeout(2000);
+  await paymentPlanPage.selectPaymentPlan("upfront");
 });
 
 Then(
   "the next button on payment plan step should become enabled",
   async function () {
+    // await page.waitForTimeout(3000);
     await expect(paymentPlanPage.activeNextButton).toBeVisible();
   }
 );
 
 When("user selects a payment plan", async function () {
-  await paymentPlanPage.selectPaymentPlan("installments");
+  await page.waitForTimeout(2000);
+  await paymentPlanPage.selectPaymentPlan("upfront");
 });
 
 When("user clicks the next button on payment plan step", async function () {
