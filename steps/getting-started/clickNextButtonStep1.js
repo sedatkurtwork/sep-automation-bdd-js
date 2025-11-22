@@ -1,11 +1,16 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { startApplicationPage, page } from "../../globalPagesSetup.js";
+import {
+  startApplicationPage,
+  paymentPlanPage,
+  page,
+} from "../../globalPagesSetup.js";
+
 import { productInfo } from "../../utilities/qa-data-reader.js";
 import { start } from "repl";
 
-  //      # Green Hex Code:  rgb(172, 245, 138)
-   //     # Blue Hex Code:  rgb(1, 201, 255)
+//      # Green Hex Code:  rgb(172, 245, 138)
+//     # Blue Hex Code:  rgb(1, 201, 255)
 
 When("user enters the first name", async function () {
   // fill first-name field
@@ -58,21 +63,17 @@ Then(
   }
 );
 
-Then(
-  "the payment plan stepper circle color should be blue",
-  async function () {
+Then("the payment plan stepper circle color should be blue", async function () {
+  const circle = startApplicationPage.paymentPlanStepCircle;
 
-    const circle = startApplicationPage.paymentPlanStepCircle;
+  const bgColor = await circle.evaluate((el) => {
+    return window.getComputedStyle(el).backgroundColor;
+  });
 
-    const bgColor = await circle.evaluate((el) => {
-      return window.getComputedStyle(el).backgroundColor;
-    });
+  console.log("Blue Stepper circle color:", bgColor);
 
-    console.log("Blue Stepper circle color:", bgColor);
-
-    expect(bgColor).toBe("rgb(1, 201, 255)");
-  }
-);
+  expect(bgColor).toBe("rgb(1, 201, 255)");
+});
 
 When(
   "user leaves the How did you hear about us field empty",
