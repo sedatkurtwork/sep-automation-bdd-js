@@ -103,14 +103,14 @@ export class ReviewPaymentPage extends BasePage {
   /**
    * @param {string} [expiryDate]
    */
-  async enterExpiryDate(expiryDate = process.env.CARD_EXPIRATION_DATE) {
+  async enterExpiryDate(expiryDate = process.env.EXPIRATION_DATE) {
     await this.expiryDateInput.fill(expiryDate);
   }
 
   /**
    * @param {string} [cvc]
    */
-  async enterCVC(cvc = process.env.CARD_SECURITY_CODE) {
+  async enterCVC(cvc = process.env.CVC) {
     await this.cvcInput.fill(cvc);
   }
 

@@ -42,11 +42,12 @@ When("user selects a payment plan", async function () {
 
 When("user clicks the next button on payment plan step", async function () {
   await paymentPlanPage.activeNextButton.click();
+    await page.waitForTimeout(2000);
 });
 
 Then("step three page should be displayed", async function () {
 
-  page.waitForTimeout(3000);
+  await page.waitForTimeout(3000);
   await expect(reviewPaymentPage.cardNumberInput).toBeVisible();
 });
 
