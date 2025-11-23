@@ -10,7 +10,7 @@ module.exports = {
      * Number of workers to run in parallel.
      * @type {number}
      */
-    parallel: 1,
+    parallel: 3,
 
     /**
      * Glob patterns for feature files.
