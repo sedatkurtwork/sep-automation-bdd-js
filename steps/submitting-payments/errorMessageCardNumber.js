@@ -19,6 +19,7 @@ When(
 
 // Checks the terms and conditions checkbox
 When("user checks the terms and conditions checkbox", async function () {
+    await page.waitForTimeout(2000);
   await reviewPaymentPage.termsAndConditionsCheckbox.check();
 });
 
