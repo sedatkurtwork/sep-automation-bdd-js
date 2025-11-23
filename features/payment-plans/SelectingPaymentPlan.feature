@@ -1,7 +1,7 @@
-@sep14
+@sep14 @regression
 Feature: Selecting a price plan
 
-    As a customer, I want to be able to Choose a payment plan from the available options 
+    As a customer, I want to be able to Choose a payment plan from the available options
     so that I can choose the one that best suits my needs.
 
     #* AC1: When the user selects any payment plan (Accordion) that option should be highlighted to indicate selection.
@@ -26,7 +26,7 @@ Feature: Selecting a price plan
         When user selects a payment plan
         Then the next button on payment plan step should become enabled
 
-    @sep14-3
+    @sep14-3 @smoke
     Scenario: User should be able to change their payment plan selection
         When user clicks the first payment plan option
         And user clicks the second payment plan option

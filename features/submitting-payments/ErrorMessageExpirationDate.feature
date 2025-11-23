@@ -1,4 +1,4 @@
-@sep27
+@sep27 @regression
 Feature: Error messages for the invalid expiration number
 
     As a user, I want to be informed when my card's expiration date has failed.
