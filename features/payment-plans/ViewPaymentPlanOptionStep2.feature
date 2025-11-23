@@ -1,4 +1,4 @@
-@sep17
+@sep17 @regression
 Feature: View payment plan options in Step 2   #! test only
 
     As a customer, I should be able to see payment plan options in Step 2.
@@ -45,7 +45,7 @@ Feature: View payment plan options in Step 2   #! test only
     # ======================================
     # Selection test (already implemented)
     # ======================================
-    @sep14-3
+    @sep14-3 @smoke
     Scenario: User should be able to change their payment plan selection
         When user clicks the first payment plan option
         And user clicks the second payment plan option

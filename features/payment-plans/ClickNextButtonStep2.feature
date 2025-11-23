@@ -1,4 +1,4 @@
-@sep16
+@sep16 @regression
 Feature: Click on the next button on payment plans page   #! Test Only
 
     As a customer, I should be able to click on the next button on step 2 when I select a plan.
@@ -38,7 +38,7 @@ Feature: Click on the next button on payment plans page   #! Test Only
         And step two stepper circle should be green
         And step three stepper circle should be blue
 
-    @sep16-4
+    @sep16-4 @smoke
     Scenario: Payment component should be displayed on Step 3
         When user selects a payment plan
         And user clicks the next button on payment plan step

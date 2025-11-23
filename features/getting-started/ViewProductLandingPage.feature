@@ -1,4 +1,4 @@
-@sep07
+@sep07 @regression
 Feature: View Product Landing Page
 
     As a customer, I should be able to see the product landing page.
@@ -20,7 +20,7 @@ Feature: View Product Landing Page
     Scenario: Verify system displays the text "Cydeo Secure checkout".
         Then the page should display the text "Cydeo Secure checkout"
     
-    @sep07-2
+    @sep07-2 @smoke
     Scenario: Verify system should display the program name
         Then the page should display the program name
 

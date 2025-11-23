@@ -1,4 +1,4 @@
-@sep29
+@sep29 @regression
 Feature: Error message for the invalid CVC number
 
     As a user, I want to be informed when the CVC number I enter is incorrect or too short.

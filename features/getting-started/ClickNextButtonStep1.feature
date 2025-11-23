@@ -1,4 +1,4 @@
-@sep19
+@sep19 @regression
 Feature: Click on the next button on step 1
 
     As a customer, I should be able to click on the next button on step 1 when I give valid information.
@@ -24,7 +24,7 @@ Feature: Click on the next button on step 1
         Then the start application stepper circle color should be green
         And the payment plan stepper circle color should be blue
 
-    @sep19-2
+    @sep19-2 @smoke
     Scenario: Navigate to payment plan with only required fields provided
         And user leaves the How did you hear about us field empty
         And user clicks Next button on start application step

@@ -1,4 +1,4 @@
-@sep11
+@sep11 @regression
 Feature: Program start dates and Refund dates
 
     As a customer, I want to see the program start dates and refund policy details before enrolling
@@ -12,12 +12,12 @@ Feature: Program start dates and Refund dates
     Background:
         Given user is on the enrollment page
 
-    @sep11-1
+    @sep11-1 @smoke
     Scenario: Verify that the program start date and refund date are displayed
         Then the program start date is displayed
         And the program refund date is displayed
 
-    @sep11-2
+    @sep11-2 @smoke
     Scenario: Verify that the program start date and refund date are correct
         Then the program start date for the program is correct
         And the program refund date for the refund data is correct

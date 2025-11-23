@@ -1,4 +1,4 @@
-@sep08
+@sep08 @regression
 Feature: Display the steps of the checkout process
 
     As a customer, I should be able to know where I am in the checkout process using the stepper.
@@ -20,10 +20,10 @@ Feature: Display the steps of the checkout process
         And the stepper should display Review
 
     @sep08-2
-    Scenario:  Verify that ystem should highlight "Start Application" in blue.
+    Scenario:  Verify that system should highlight "Start Application" in blue.
         And the stepper should highlight Start Application in blue
 
     @sep08-3
-    Scenario:  Verify that ystem should highlight "Start Application"
+    Scenario:  Verify that system should highlight "Start Application"
         And the stepper should display Payment Plan in grey
-        And the stepper should display Review in grey     
+        And the stepper should display Review in grey
